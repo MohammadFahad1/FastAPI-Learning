@@ -3,9 +3,17 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+class Address(BaseModel):
+    street: str
+    city: str
+    state: str
+    country: str
+
 class User(BaseModel):
     name: str
     age: int
+    email: str
+    address: Address
 
 @app.post("/create-user/")
 def create_user(user: User):
@@ -14,4 +22,3 @@ def create_user(user: User):
         "message": "User created successfully",
         "user": user
     }
-
