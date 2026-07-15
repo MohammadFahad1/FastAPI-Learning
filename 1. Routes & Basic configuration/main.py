@@ -41,3 +41,29 @@ def get_user(user_name: str):
     return {
         "user_name": user_name
     }
+
+
+# Query Parameters
+# /products/?id=1
+# /products/?id=2&name=abc
+@app.get("/products/")
+def get_product(id: int, name: str = None):
+    return {
+        "id": id,
+        "product_name": name
+    }
+
+# With a default value
+@app.get("/categories/")
+def get_category(category_id: int, category_name: str = "General"):
+    return {
+        "category_id": category_id,
+        "category_name": category_name
+    }
+
+@app.get("/items/")
+def get_items(name: str = None, price: int = 0):
+    return {
+        "name": name,
+        "price": price
+    }
