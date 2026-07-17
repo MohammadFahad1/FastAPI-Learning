@@ -21,3 +21,13 @@ def get_user():
         "message": "User fetched successfully"
     }
 
+@app.get("/users/{user_id}", status_code=status.HTTP_200_OK)
+def get_user(user_id: int):
+    if user_id != 1:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    return {
+        "name": "Fahad",
+        "age": 27,
+        "message": "User fetched successfully"
+    }
+
