@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
+# Custom Exception Handler
 class UserNotFoundException(Exception):
     def __init__(self, name: str):
         self.name = name
@@ -25,14 +26,4 @@ def get_user(name: str):
         "age": 27
     }
 
-@app.get("/users/{user_id}", status_code=status.HTTP_200_OK)
-def get_user(user_id: int):
-    if user_id != 1:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-    return {
-        "success": True,
-        "user_id": user_id,
-        "name": "Fahad",
-        "age": 27
-    }
 
