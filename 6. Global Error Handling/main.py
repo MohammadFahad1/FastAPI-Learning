@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
-# Custom Exception Handler
+# Custom Global Exception Handler
 class UserNotFoundException(Exception):
     def __init__(self, name: str):
         self.name = name
